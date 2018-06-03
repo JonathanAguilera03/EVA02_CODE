@@ -1,0 +1,20 @@
+/**
+ *
+ * @author Jonathan Aguilera
+ */
+public class Principal {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+         meLlamoAmiMismo();       
+
+    }
+    
+    public static void meLlamoAmiMismo(){
+        System.out.println("Hola Mundo!!");
+                meLlamoAmiMismo();
+    }
+    
+}
