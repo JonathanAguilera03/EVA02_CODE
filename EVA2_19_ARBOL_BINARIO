@@ -1,0 +1,91 @@
+public class ArbolBinario {
+    private Nodo root;
+
+    public ArbolBinario() {
+        root=null;
+    }
+
+    public ArbolBinario(Nodo root) {
+        this.root = root;
+    }
+    
+    public void addNodo(Nodo nuevo) throws Exception{
+        if(root==null){
+            root=nuevo;
+        }else{
+            addNodoRec(root, nuevo);
+        }
+
+    }
+    
+    private void addNodoRec(Nodo nuevo, Nodo actual) throws Exception{
+        if(nuevo.getMiDato()>actual.getMiDato()){//MAYOR VA A LA DERECHA
+            if(actual.getSig()==null){//VERIFICAMOS SI ESTÁ VACIO (NULL)
+                actual.setSig(nuevo);
+            }else{//NO ESTÁ VACIA, HAY QUE SEGUIRLE
+                addNodoRec(nuevo, actual.getSig());
+            }
+        }else if(nuevo.getMiDato()<actual.getMiDato()){//MENOR VA A LA IZQUIERDA
+            if(actual.getPrev()==null){//VERIFICAMOS SI ESTÁ VACIO (NULL)
+                actual.setPrev(nuevo);
+            }else{//NO ESTÁ VACIA, HAY QUE SEGUIRLE
+                addNodoRec(nuevo, actual.getPrev());
+            }
+        }else{
+            throw new Exception("No se valen valores repetidos");
+        }
+    }
+}
+-------------------------------------------------------------------------------------------
+
+public class Nodo {
+    private int miDato;
+    private Nodo sig;
+    private Nodo prev;
+
+    public Nodo() {
+        this.sig = null;
+        this.prev=null;
+    }
+
+    public Nodo(Nodo prev) {
+        this.prev = prev;
+    }
+
+    public Nodo(int miDato) {
+        this.miDato = miDato;
+        this.sig = null;
+        this.prev=null;
+    }
+
+    public Nodo(int miDato, Nodo sig, Nodo prev) {
+        this.miDato = miDato;
+        this.sig = sig;
+        this.prev=null;
+    }
+
+    public void setSig(Nodo sig) {
+        this.sig = sig;
+    }
+
+    public Nodo getSig() {
+        return sig;
+    }
+
+    public int getMiDato() {
+        return miDato;
+    }
+
+    public Nodo getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Nodo prev) {
+        this.prev = prev;
+    }
+
+    public void setMiDato(int miDato) {
+        this.miDato = miDato;
+    }
+    
+}
